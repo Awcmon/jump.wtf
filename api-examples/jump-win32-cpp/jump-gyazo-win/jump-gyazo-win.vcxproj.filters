@@ -29,6 +29,9 @@
     <ClCompile Include="jump-gyazo-win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="jsoncpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="jump-gyazo-win.rc">
