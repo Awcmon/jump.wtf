@@ -269,6 +269,40 @@ namespace jump {
 		}
 	}
 
+
+	EXPORT url_data get_upload_url_s(bool isPrivate)
+	{
+		Json::Value json = get_upload_url(isPrivate);
+
+		url_data out;
+		out.url = json["URL"].asString();
+		out.content_type = json["content-type"].asString();
+		out.tmp_key = json["tmp-key"].asString();
+
+		return out;
+	}
+
+	EXPORT url_data gen_jump_file_url_s(std::string tmp_key, std::string extension, std::string del_password, bool isPrivate, unsigned clicks)
+	{
+		Json::Value json = gen_jump_file_url(tmp_key, extension, del_password, isPrivate, clicks);
+
+		url_data out;
+		out.url = json["url"].asString();
+		if (json.isMember("cdn-url"))
+		{
+			out.cdn_url = json["cdn-url"].asString();
+		}
+
+		return out;
+	}
+	/*
+	EXPORT url_data gen_jump_url_s(std::string URL, std::string del_password, bool isPrivate, unsigned clicks) 
+	{
+		Json::Value json = gen_jump_url(URL, del_password, isPrivate, clicks);
+	}
+	*/
+
+
 	// read the response, add onto the output string
 	size_t write_json_response(void* ptr, size_t size, size_t count, void* out) {
 		dprint("write_json_response callback called");

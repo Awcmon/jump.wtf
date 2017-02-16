@@ -42,6 +42,19 @@ namespace jump {
 // isPrivate          --    whether or not the file will have a click limit
 // clicks             --    how many times the link can be accessed before it is removed, requires isPrivate to be true
 
+	struct url_data
+	{
+		std::string url;
+		std::string content_type;
+		std::string tmp_key;
+		std::string cdn_url;
+	};
+
+	EXPORT url_data get_upload_url_s(bool isPrivate = false);
+	EXPORT url_data gen_jump_file_url_s(std::string tmp_key, std::string extension = ".txt", std::string del_password = "", bool isPrivate = false, unsigned clicks = 1);
+	//EXPORT url_data gen_jump_url_s(std::string URL, std::string del_password = "", bool isPrivate = false, unsigned clicks = 1);
+
+
 class JumpException : public std::exception {
 public:
 	explicit JumpException(char const* m) : message(m) {}
