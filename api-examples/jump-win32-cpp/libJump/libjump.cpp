@@ -2,6 +2,8 @@
 
 #include "curl/curl.h"
 
+#include "json/json.h"
+
 #define EXPORT __declspec(dllexport)
 #include "jump.h"
 
@@ -45,7 +47,7 @@ namespace jump {
 	size_t write_json_response(void* ptr, size_t size, size_t count, void* info);
 	size_t read_file_chunks(void* ptr, size_t size, size_t count, void* info);
 
-	EXPORT Json::Value get_upload_url(bool isPrivate)
+	/*EXPORT*/ Json::Value get_upload_url(bool isPrivate)
 	{
 		dprint("get_upload_url called");
 
@@ -146,7 +148,7 @@ namespace jump {
 		}
 	}
 
-	EXPORT Json::Value gen_jump_file_url(std::string tmp_key, std::string extension, std::string del_password, bool isPrivate, unsigned clicks)
+	/*EXPORT*/ Json::Value gen_jump_file_url(std::string tmp_key, std::string extension, std::string del_password, bool isPrivate, unsigned clicks)
 	{
 		dprint("get_jump-file_url called");
 
@@ -208,7 +210,7 @@ namespace jump {
 		return out;
 	}
 
-	EXPORT Json::Value gen_jump_url(std::string URL, std::string del_password, bool isPrivate, unsigned clicks) {
+	/*EXPORT*/ Json::Value gen_jump_url(std::string URL, std::string del_password, bool isPrivate, unsigned clicks) {
 		{
 			dprint("get_jump_url called");
 
